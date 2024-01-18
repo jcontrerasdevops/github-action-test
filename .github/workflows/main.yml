@@ -13,6 +13,4 @@ jobs:
       - run: |
           ls -la
       - run: |
-          npm --version
-      - run: |
-          make build
+          make version

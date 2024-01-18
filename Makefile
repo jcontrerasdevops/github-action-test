@@ -1,2 +1,2 @@
-build:
-	npm run build
+version:
+	npm --version
