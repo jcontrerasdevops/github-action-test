@@ -2,9 +2,7 @@ name: Test Github Actions
 
 on:
   push:
-    branches: [main]
-  pull-request:
-    branches: [main]
+    branches: [ main ]
 
 jobs:
   run-ubuntu:
