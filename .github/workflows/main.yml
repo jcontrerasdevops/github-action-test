@@ -16,4 +16,8 @@ jobs:
       - run: |
           make version
       - run: |
+          echo ${{vars.USERNAME}}
+      - run: |
           make run USERNAME=${{vars.USERNAME}}
+      - run: |
+          make run
