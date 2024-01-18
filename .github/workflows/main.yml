@@ -8,6 +8,7 @@ jobs:
   build:
     name: Build
     runs-on: ubuntu-22.04
+    environment: dev
     steps:
       - uses: actions/checkout@v4
       - run: |
