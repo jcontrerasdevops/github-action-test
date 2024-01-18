@@ -9,9 +9,9 @@ jobs:
     name: Build
     runs-on: ubuntu-22.04
     environment: ${{
-      if (github.ref == 'refs/heads/develop' && 'dev') || 
-      if (github.ref == 'refs/heads/main' && 'qa') ||
-      if startsWith(github.ref, 'v') }}
+      github.ref == 'refs/heads/develop' && 'dev' ||
+      github.ref == 'refs/heads/main' && 'qa' ||
+      startsWith(github.ref, 'v') && 'prod' }}
     # environment: ${{ github.ref == 'refs/heads/main' && 'dev' || 'qa' }}
     # environment: ${{ github.ref == 'refs/heads/develop' && 'dev' || 'prod' }}
 
