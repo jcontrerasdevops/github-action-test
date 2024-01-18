@@ -8,7 +8,8 @@ jobs:
   build:
     name: Build
     runs-on: ubuntu-22.04
-    environment: dev
+    environment: ${{ github.ref == 'refs/heads/develop' && 'dev' || 'prod' }}
+
     steps:
       - uses: actions/checkout@v4
       - run: |
@@ -19,5 +20,3 @@ jobs:
           echo ${{vars.USERNAME}}
       - run: |
           make run USERNAME=${{vars.USERNAME}}
-      - run: |
-          make run
