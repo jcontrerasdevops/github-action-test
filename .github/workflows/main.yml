@@ -5,8 +5,8 @@ on:
     branches: [ main ]
 
 jobs:
-  run-ubuntu:
-    name: Run steps in Ubuntu
+  build:
+    name: Build
     runs-on: ubuntu-22.04
     steps:
       - uses: actions/checkout@v4
