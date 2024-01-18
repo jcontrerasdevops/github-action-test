@@ -1,4 +1,4 @@
-name: Test Github Actions
+name: github-action-test
 
 on:
   push:
