@@ -3,11 +3,7 @@ name: github-action-test
 on:
   push:
     branches: [ develop, main ]
-  workflow_dispatch:
-    inputs:
-      name:
-        description: "Prueba"
-        default: "dev"
+  workflow_dispatch: {}
 
 jobs:
   build:
@@ -16,9 +12,7 @@ jobs:
     environment: ${{
       github.ref == 'refs/heads/develop' && 'dev' ||
       github.ref == 'refs/heads/main' && 'qa' ||
-      startsWith(github.ref, 'v') && 'prod' }}
-    # environment: ${{ github.ref == 'refs/heads/main' && 'dev' || 'qa' }}
-    # environment: ${{ github.ref == 'refs/heads/develop' && 'dev' || 'prod' }}
+      startsWith(github.ref, 'refs/tags/v') && 'prod' }}
 
     steps:
       - uses: actions/checkout@v4
@@ -28,5 +22,7 @@ jobs:
           make version
       - run: |
           echo ${{vars.USERNAME}}
+      - run: |
+          echo ${{github.ref}}
       - run: |
           make run USERNAME=${{vars.USERNAME}}
