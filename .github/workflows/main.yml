@@ -3,7 +3,16 @@ name: main-workflow
 on:
   push:
     branches: [ develop, main ]
-  workflow_dispatch: {}
+  workflow_dispatch:
+    inputs:
+      app-type:
+        description: 'App type'
+        default: backend
+        required: true
+        type: choice
+        options:
+        - backend
+        - frontend
 
 jobs:
   build:
@@ -32,3 +41,7 @@ jobs:
       - name: Show username with makefile
         run: |
           make run USERNAME=${{vars.USERNAME}}
+      - name: Show input
+        run: |
+          echo ${{inputs.app-type}}
+        if: ${{github.event_name == 'workflow_dispatch'}}
