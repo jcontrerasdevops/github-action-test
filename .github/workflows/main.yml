@@ -15,14 +15,20 @@ jobs:
       startsWith(github.ref, 'refs/tags/v') && 'prod' }}
 
     steps:
-      - uses: actions/checkout@v4
-      - run: |
+      - name: Download repository
+        uses: actions/checkout@v4
+      - name: Print files in directory
+        run: |
           ls -la
-      - run: |
+      - name: Get version Node JS
+        run: |
           make version
-      - run: |
+      - name: Print username for environment
+        run: |
           echo ${{vars.USERNAME}}
-      - run: |
+      - name: Show database password
+        run: |
           echo ${{secrets.DATABASE_PASS}}
-      - run: |
+      - name: Show username with makefile
+        run: |
           make run USERNAME=${{vars.USERNAME}}
