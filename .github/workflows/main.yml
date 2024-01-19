@@ -1,4 +1,4 @@
-name: github-action-test
+name: main-workflow
 
 on:
   push:
@@ -23,6 +23,6 @@ jobs:
       - run: |
           echo ${{vars.USERNAME}}
       - run: |
-          echo ${{github.ref}}
+          echo ${{secrets.DATABASE_PASS}}
       - run: |
           make run USERNAME=${{vars.USERNAME}}
