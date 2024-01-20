@@ -45,9 +45,26 @@ jobs:
         run: |
           echo ${{inputs.app-type}}
         if: ${{github.event_name == 'workflow_dispatch'}}
-      - name: Upload artifact
+      - name: Upload build artifact
         uses: actions/upload-artifact@v4
         with:
           name: build-artifact
           path: |
             Makefile
+
+  deploy:
+    name: Deploy
+    needs: [build]
+    runs-on: ubuntu-22.04
+    environment: ${{
+      github.ref == 'refs/heads/develop' && 'dev' ||
+      github.ref == 'refs/heads/main' && 'qa' ||
+      startsWith(github.ref, 'refs/tags/v') && 'prod' }}
+    steps:
+      - name: Download build artifact
+        uses: actions/download-artifact@v4
+        with:
+          name: build-artifact
+      - name: Print files in directory
+        run: |
+          ls -la
