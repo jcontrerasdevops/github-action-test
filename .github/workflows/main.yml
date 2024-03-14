@@ -33,7 +33,7 @@ jobs:
       - name: Print files in directory
         run: |
           ls -la
-        if: ${{ inputs.test && inputs.test == true }}
+        if: ${{ github.event_name == 'push' || inputs.test == true }}
         
       - name: Get version Node JS
         run: |
