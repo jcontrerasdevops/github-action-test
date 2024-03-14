@@ -32,8 +32,10 @@ jobs:
         uses: actions/checkout@v4
       - name: Print files in directory
         run: |
-          ls -la && ls -la
-        if: ${{ true && inputs.test == true }}
+          ls -la
+        env:
+          TEST: ${{ inputs.test == true && true || false }}
+        if: ${{ $TEST }}
         
       - name: Get version Node JS
         run: |
