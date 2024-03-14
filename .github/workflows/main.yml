@@ -33,7 +33,7 @@ jobs:
       - name: Print files in directory
         run: |
           ls -la
-        if: ${{ inputs.test == true }}
+        if: ${{ inputs.test && inputs.test == true }}
         
       - name: Get version Node JS
         run: |
