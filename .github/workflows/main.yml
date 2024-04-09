@@ -53,7 +53,7 @@ jobs:
         if: ${{github.event_name == 'workflow_dispatch'}}
       - name: Set environment
         run: |
-          export PACK=build-artifact
+          echo "PACK=build-artifact" >> $GITHUB_ENV
       - name: Set environment
         run: |
           echo $PACK
