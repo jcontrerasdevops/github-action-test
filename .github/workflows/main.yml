@@ -53,7 +53,7 @@ jobs:
         if: ${{github.event_name == 'workflow_dispatch'}}
       - name: Set environment
         run: |
-          echo "PACK=$(cat ./config/${{ inputs.environment }} | xargs)" >> $GITHUB_ENV
+          echo "PACK=$(cat ./config/certification | xargs)" >> $GITHUB_ENV
       - name: Set environment
         run: |
           echo $PACK
