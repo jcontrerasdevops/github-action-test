@@ -53,11 +53,11 @@ jobs:
         if: ${{github.event_name == 'workflow_dispatch'}}
       - name: Set environment
         run: |
-          echo export PACK=build-artifact
+          export PACK=build-artifact
       - name: Upload build artifact
         uses: actions/upload-artifact@v4.2.0
         with:
-          name: ${{ env.PACK}}
+          name: ${{ env.PACK }}
           path: |
             Makefile
 
