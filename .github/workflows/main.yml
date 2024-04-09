@@ -54,6 +54,9 @@ jobs:
       - name: Set environment
         run: |
           export PACK=build-artifact
+      - name: Set environment
+        run: |
+          echo $PACK
       - name: Upload build artifact
         uses: actions/upload-artifact@v4.2.0
         with:
